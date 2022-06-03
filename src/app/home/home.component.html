@@ -1,0 +1,8 @@
+<mat-form-field appearance="fill">
+    <mat-label>enter number between 1 - 20</mat-label>
+    <input matInput type="number"   min="1" max="20" [formControl]="num">
+  </mat-form-field>
+  <div *ngIf="num.value">
+  <span>	{{timesCombinationStr}} </span>
+  <button (click)="_service.getNextCobination()">הבא</button></div>
+  <button (click)="_service.getAllCombination()">כל הקומבינציות</button>
