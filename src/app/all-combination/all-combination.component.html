@@ -9,7 +9,7 @@
   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>
 
-<mat-paginator [length]="resultsLength" [pageSize]="10" (page)="onPageChanged($event)">
+<mat-paginator [length]="_service.timesCombination" [pageSize]="10" (page)="onPageChanged($event)">
 </mat-paginator>
 
-resultsLength : {{resultsLength}}
+resultsLength : {{_service.timesCombination}}

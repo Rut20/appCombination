@@ -51,7 +51,7 @@ export class AllCombinationComponent implements OnInit {
   private setPaginator() {
     this.combinationList.paginator = this.paginator;
     this._service.severalPossibleCombinations$.subscribe(item => {
-      this.resultsLength = item;
+      // this.resultsLength = item;
     })
     this.combinationList.paginator._intl.itemsPerPageLabel = ' ';
   }
