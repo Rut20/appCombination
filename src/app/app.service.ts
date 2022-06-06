@@ -1,7 +1,5 @@
 import { Injectable, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { AppHttpService } from './app.http.service';
 import { PaginationQuery } from './all-combination/all-combination.model';
@@ -14,7 +12,6 @@ export class AppService {
     numCombination = 0;
     pageSize = 10;
     pageNumber = 0;
-    resultsLength: number = 0;
     timesCombination: number = 0;
 
 
@@ -28,11 +25,12 @@ export class AppService {
     getNextCobination() {
         this._httpService.getNextApi().subscribe(res => {
             this.combination = res
-            console.log(res);
 
             this.numCombination++
             this.router.navigate(['/combination'])
-        })
+        }, err => {
+
+        });
     }
 
     getAllCombination() {
@@ -43,10 +41,8 @@ export class AppService {
     reset() {
         this.router.navigate(['/home'])
     }
-    return(){
+
+    return() {
         this.router.navigate(['/combination'])
     }
-
-    public severalPossibleCombinations$: BehaviorSubject<number> = new BehaviorSubject<number>(0);
-
 }

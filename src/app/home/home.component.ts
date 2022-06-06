@@ -9,7 +9,6 @@ import { AppService } from '../app.service';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  timesCombination: number = 0;
   timesCombinationStr: string = "";
   constructor(public _service: AppService, public _httpService: AppHttpService) { }
   public num = new FormControl('', [Validators.min(1), Validators.max(20), Validators.required]);
@@ -31,8 +30,9 @@ export class HomeComponent implements OnInit {
       this._service.timesCombination = res;
       this._service.numCombination = 0;
       this.timesCombinationStr = "	The total options for arranging numbers in a row is: " + res.toString();
-      console.log(res);
 
-    })
+    }, err => {
+
+    });
   }
 }

@@ -12,7 +12,7 @@ export class AppHttpService {
     num: number = 0;
     combination: number[] = []
     pageSize = 10;
-    pageNumber = 1;
+    pageNumber = 0;
     constructor(private _http: HttpClient, private router: Router) { }
 
     getNumCombination(): Observable<number> {

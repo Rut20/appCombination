@@ -12,7 +12,4 @@ export class CombinationComponent implements OnInit {
 
   ngOnInit(): void {
   }
-// getNext(){
-//   this._service.getNextFromApigetNextFromApi().subscribe;
-// }
 }
