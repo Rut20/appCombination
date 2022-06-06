@@ -1,8 +1,13 @@
-<mat-form-field appearance="fill">
+<div>
+  <mat-form-field appearance="fill">
     <mat-label>enter number between 1 - 20</mat-label>
-    <input matInput type="number"   min="1" max="20" [formControl]="num">
+    <input matInput type="number" min="1" max="20" [formControl]="num">
   </mat-form-field>
-  <div *ngIf="num.value">
-  <span>	{{timesCombinationStr}} </span>
-  <button (click)="_service.getNextCobination()">next</button></div>
-  <button (click)="_service.getAllCombination()">all combination</button>
+</div>
+<div>
+  <span *ngIf="num.value"> {{timesCombinationStr}} </span>
+</div>
+<div *ngIf="num.value">
+<button mat-raised-button color="primary" (click)="_service.getNextCobination()">next</button>
+<button mat-raised-button color="primary" (click)="_service.getAllCombination()">all combination</button>
+</div>

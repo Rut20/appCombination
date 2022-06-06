@@ -38,8 +38,9 @@ export class AllCombinationComponent implements OnInit {
         return {
           combination: item
         }
-
       })
+      this._service.combination=res[9]
+
       this.setPaginator();
     })
   }

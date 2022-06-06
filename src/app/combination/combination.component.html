@@ -1,10 +1,9 @@
-
-<div>
 <p *ngIf="_service.combination">
     <span>{{_service.numCombination}} .</span>
     <label *ngFor="let c of _service.combination">{{c}} ,</label>
 </p>
 <label *ngIf="!_service.combination">No more possible combinations</label>
 
-<button *ngIf="_service.combination" (click)="_service.getNextCobination()">next</button></div>
-<button *ngIf="_service.combination" (click)="_service.getAllCombination()">all combination</button>
+<button mat-raised-button color="primary" *ngIf="_service.combination" (click)="_service.getNextCobination()">next</button>
+<button mat-raised-button color="primary" *ngIf="_service.combination" (click)="_service.getAllCombination()">all combination</button>
+<button mat-raised-button color="primary" (click)="_service.reset()">reset</button>

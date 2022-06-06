@@ -30,7 +30,7 @@ export class HomeComponent implements OnInit {
       
       this._service.timesCombination = res;
       this._service.numCombination = 0;
-      this.timesCombinationStr = "	סה''כ האפשרויות לסדר  מספרים בשורה הוא: " + res.toString();
+      this.timesCombinationStr = "	The total options for arranging numbers in a row is: " + res.toString();
       console.log(res);
 
     })

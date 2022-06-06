@@ -14,6 +14,7 @@ import { AllCombinationComponent } from './all-combination/all-combination.compo
 import { HttpClientModule } from '@angular/common/http';
 import {MatTableModule} from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import {MatButtonModule} from '@angular/material/button';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     ReactiveFormsModule, 
     HttpClientModule,
     MatTableModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

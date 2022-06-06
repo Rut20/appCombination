@@ -13,13 +13,13 @@ export class AppService {
     combination: number[] = []
     numCombination = 0;
     pageSize = 10;
-    pageNumber = 1;
-  resultsLength: number = 0;
-  timesCombination: number = 0;
+    pageNumber = 0;
+    resultsLength: number = 0;
+    timesCombination: number = 0;
 
 
-  @ViewChild(MatPaginator) paginator!: MatPaginator;
-    
+    @ViewChild(MatPaginator) paginator!: MatPaginator;
+
     combinationList: any;
     paginationQuery = new PaginationQuery();
 
@@ -29,17 +29,24 @@ export class AppService {
         this._httpService.getNextApi().subscribe(res => {
             this.combination = res
             console.log(res);
-            
+
             this.numCombination++
             this.router.navigate(['/combination'])
         })
     }
 
     getAllCombination() {
-        this.router.navigate(['/allCombination'])   
+        this.router.navigate(['/allCombination'])
 
     }
-  
-  public severalPossibleCombinations$: BehaviorSubject<number> = new BehaviorSubject<number>(0);
+
+    reset() {
+        this.router.navigate(['/home'])
+    }
+    return(){
+        this.router.navigate(['/combination'])
+    }
+
+    public severalPossibleCombinations$: BehaviorSubject<number> = new BehaviorSubject<number>(0);
 
 }
