@@ -15,6 +15,8 @@ export class AppService {
     pageSize = 10;
     pageNumber = 1;
   resultsLength: number = 0;
+  timesCombination: number = 0;
+
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
     
@@ -26,29 +28,18 @@ export class AppService {
     getNextCobination() {
         this._httpService.getNextApi().subscribe(res => {
             this.combination = res
+            console.log(res);
+            
             this.numCombination++
             this.router.navigate(['/combination'])
         })
     }
 
     getAllCombination() {
-        this.router.navigate(['/allCombination'])
-       
-        // this.setPaginator();
+        this.router.navigate(['/allCombination'])   
 
     }
-    // onPageChanged(paginationQuery: any) {
-    //     this._httpService.pageNumber = paginationQuery.pageIndex;
-    //     this._httpService.pageSize = paginationQuery.pageSize
-    //     this.getAllCombination();
-    // }
-    // private setPaginator() {
-    //     this.combinationList.paginator = this.paginator;
-    //     this.severalPossibleCombinations$.subscribe(item => {
-    //       this.resultsLength = item;
-    //     })
-    //     this.combinationList.paginator._intl.itemsPerPageLabel = ' ';
-    //   }
+  
   public severalPossibleCombinations$: BehaviorSubject<number> = new BehaviorSubject<number>(0);
 
 }

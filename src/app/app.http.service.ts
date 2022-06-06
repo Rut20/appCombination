@@ -23,8 +23,8 @@ export class AppHttpService {
         return this._http.get<number[]>(this.homeUrl + 'GetNextApi')
     }
 
-    getAsPromise(): Observable<any> {
-        return this._http.get<any>(this.homeUrl+ 'GetAllApi/' + 1 + '/' + 10).pipe(map(res => res));
+    getAsPromise<T>() {
+        return this._http.get<T>(this.homeUrl+ 'GetAllApi/' + this.pageNumber + '/' + this.pageSize);
        
     }
 }

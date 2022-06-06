@@ -1,5 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
+import { ActivatedRoute } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { AppHttpService } from '../app.http.service';
 import { AppService } from '../app.service';
 import { PaginationQuery } from './all-combination.model';
@@ -11,36 +13,28 @@ import { PaginationQuery } from './all-combination.model';
 })
 export class AllCombinationComponent implements OnInit {
   displayedColumns: string[] = ['combination'];
-  resultsLength: number = 0;
+  resultsLength: number =this._service.timesCombination
   paginationQuery = new PaginationQuery();
+  currentN: number = 0;
+  activeRouteTabSubscription: Subscription | null = null;;
+
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   combinationList: any;
 
-  constructor(public _service: AppService, public _httpService: AppHttpService) { }
+  constructor(public _service: AppService, public _httpService: AppHttpService, private activeRoute:ActivatedRoute) { }
 
   ngOnInit(): void {
+    // this.resultsLength=this._service.timesCombination
+    // this.activeRouteTabSubscription = this.activeRoute.params.subscribe((urlParameters) => {
+    //   this.currentN = urlParameters['n'];
+    // });
     this.initPage()
   }
-  //   getAllCombination() {
-  //     this._httpService.getAllApi().subscribe(res => {
-  //         this.combinationList = res.result.map((item: any) => {
-  //             this.router.navigate(['/allCombination'])
-
-  //             return {
-  //                 combination: item
-  //             }
-
-  //         })
-
-  //     })
-  //     this.setPaginator();
-
-  // }
+ 
   initPage() {
-    this._httpService.getAsPromise().subscribe(res => {
-      this.combinationList = res.result.map((item: any) => {
-
+    this._httpService.getAsPromise<any>().subscribe(res => {
+      this.combinationList = res.map((item: any) => {
         return {
           combination: item
         }

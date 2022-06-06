@@ -27,6 +27,7 @@ export class HomeComponent implements OnInit {
     this._httpService.num = this.num.value
 
     this._httpService.getNumCombination().subscribe(res => {
+      
       this.timesCombination = res;
       this._service.numCombination = 0;
       this.timesCombinationStr = "	סה''כ האפשרויות לסדר  מספרים בשורה הוא: " + res.toString();
